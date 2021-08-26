@@ -1,6 +1,6 @@
 const {
   //   findAllPokemons,
-  //   findPokemonByName,
+  findPokemonByName,
   //   findPokemonsWithBaseHpMoreThan,
   //   findPokemonByNameOrBaseHP,
   findPokemonsWithBaseHPGreaterThan,
@@ -41,7 +41,7 @@ const pokemons = [
   },
 ];
 
-describe("retrieve/read/find", () => {
+describe.skip("retrieve/read/find", () => {
   beforeAll(async () => {
     await db.sequelize.sync({ force: true });
     await PokemonModel.bulkCreate(pokemons);
@@ -66,17 +66,17 @@ describe("retrieve/read/find", () => {
   //   });
 
   describe("findPokemons", () => {
-    // describe("findPokemonsByName", () => {
-    //   it("should return a Pokemon", async () => {
-    //     const retrieved = await findPokemonByName("Pikachu");
-    //     expect(retrieved).toMatchObject(pikachu);
-    //   });
+    describe("findPokemonsByName", () => {
+      it("should return a Pokemon", async () => {
+        const retrieved = await findPokemonByName("Pikachu");
+        expect(retrieved).toMatchObject(pikachu);
+      });
 
-    //   it("should return empty when pokemon not found", async () => {
-    //     const retrieved = await findPokemonByName("Giberrish");
-    //     expect(retrieved).toMatchObject([]);
-    //   });
-    // });
+      it.skip("should return empty when pokemon not found", async () => {
+        const retrieved = await findPokemonByName("Giberrish");
+        expect(retrieved).toMatchObject([]);
+      });
+    });
 
     describe("findPokemonsWithBaseHPGreaterThan", () => {
       it("should return array with baseHP more than", async () => {
