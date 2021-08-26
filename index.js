@@ -14,9 +14,18 @@
 
 const db = require("./db/models/index.js"); // --> Connecting to index.js
 const createPikachu = require("./crud/create"); //  --> Add this for creation.
-
+const updatePikachu = require("./crud/update"); //  --> Add this for update.
+const deletePikachu = require("./crud/delete"); //  --> Add this for deletion.
 // [1] Just test connection, we don't neeed this in actual. --> REMOVE THIS SECTION
 // [2] For dev exploration convenience, we forced synchronisation.
-db.sequelize.sync({ force: true }); // --> REPLACE THIS
+// db.sequelize.sync({ force: true }); // --> REPLACE THIS
+// setTimeout(createPikachu, 300);
 
-setTimeout(createPikachu, 500);
+const Read = require("./crud/read");
+setTimeout(() => Read.findPokemonsWithBaseHPGreaterThan(40), 500); // 500 is the time out
+setTimeout(() => Read.findPokemonWithNameOrBaseHP("Pikachu", 59), 500);
+
+// const Update = require("./crud/update");
+// setTimeout(updatePikachu, 500);
+
+setTimeout(() => deletePikachu.numberOfDeletedRecord(1), 500);

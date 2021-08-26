@@ -38,9 +38,17 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
+
     {
       sequelize,
       modelName: "SimplePokemon",
+      tableName: "SimplePokemons",
+      indexes: [
+        {
+          unique: true,
+          fields: ["name"],
+        },
+      ],
     }
   );
   return SimplePokemon;
