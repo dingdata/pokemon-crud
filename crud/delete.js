@@ -11,4 +11,13 @@ const deletePikachu = async (id) => {
   return numberOfDeletedRecord;
 };
 
-module.exports = { deletePikachu };
+const deletePikachuByName = async (name) => {
+  const numberOfDeletedRecord = await db.SimplePokemon.destroy({
+    where: {
+      name: name,
+    },
+  });
+  return numberOfDeletedRecord;
+};
+
+module.exports = { deletePikachu, deletePikachuByName };

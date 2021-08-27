@@ -1,4 +1,4 @@
-const { deletePikachu } = require("../delete.js");
+const { deletePikachu, deletePikachuByName } = require("../delete.js");
 
 const db = require("../../db/models/index");
 const PokemonModel = db.SimplePokemon;
@@ -49,8 +49,14 @@ describe.only("delete", () => {
 
   /* eslint-disable no-unused-vars, no-unused-expressions, jest/no-disabled-tests */
 
-  it("should delete pokemon by Name", async () => {
+  it("should delete pokemon by id", async () => {
     const result = await deletePikachu(1);
+    console.log(result);
+    expect(result).toEqual(1);
+  });
+
+  it("should delete pokemon by Name", async () => {
+    const result = await deletePikachuByName("Wartortle");
     console.log(result);
     expect(result).toEqual(1);
   });
